@@ -1,0 +1,32 @@
+! ===== Router R1 (Cisco 2911) - CSE and ECE gateway, WAN DCE side =====
+enable
+configure terminal
+hostname R1
+no ip domain-lookup
+!
+interface GigabitEthernet0/0
+ description LAN to SW-CSE (192.168.10.0/26)
+ ip address 192.168.10.1 255.255.255.192
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description LAN to SW-ECE (192.168.10.64/26)
+ ip address 192.168.10.65 255.255.255.192
+ no shutdown
+!
+interface Serial0/0/0
+ description WAN to R2 (192.168.10.176/30)
+ ip address 192.168.10.177 255.255.255.252
+ clock rate 64000
+ no shutdown
+!
+router ospf 1
+ router-id 1.1.1.1
+ network 192.168.10.0 0.0.0.63 area 0
+ network 192.168.10.64 0.0.0.63 area 0
+ network 192.168.10.176 0.0.0.3 area 0
+ passive-interface GigabitEthernet0/0
+ passive-interface GigabitEthernet0/1
+!
+end
+copy running-config startup-config

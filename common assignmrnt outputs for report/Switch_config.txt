@@ -1,0 +1,18 @@
+! ===== Cisco 2960 access switches: repeat with the hostname for each department =====
+! SW-CSE, SW-ECE, SW-EEE, SW-ADMIN (Layer 2 only, default VLAN 1, no extra setup needed)
+enable
+configure terminal
+hostname SW-CSE
+no ip domain-lookup
+!
+interface range FastEthernet0/1 - 24
+ switchport mode access
+ spanning-tree portfast
+!
+interface range GigabitEthernet0/1 - 2
+ switchport mode access
+ spanning-tree portfast
+!
+end
+copy running-config startup-config
+! Uplink port to the router: GigabitEthernet0/1 on each switch.

@@ -1,0 +1,14 @@
+Set in Packet Tracer: PC > Desktop > IP Configuration > Static
+
+Device       IP Address        Subnet Mask       Default Gateway
+CSE-Server   192.168.10.2      255.255.255.192   192.168.10.1
+CSE-PC1      192.168.10.10     255.255.255.192   192.168.10.1
+ECE-PC1      192.168.10.70     255.255.255.192   192.168.10.65
+ECE-PC2      192.168.10.71     255.255.255.192   192.168.10.65
+EEE-PC1      192.168.10.135    255.255.255.224   192.168.10.129
+EEE-PC2      192.168.10.136    255.255.255.224   192.168.10.129
+Admin-ERP    192.168.10.162    255.255.255.240   192.168.10.161
+Admin-PC1    192.168.10.165    255.255.255.240   192.168.10.161
+
+Cabling: Gi0/0 and Gi0/1 on each router go to a switch with a Copper Straight-Through cable.
+R1 Serial0/0/0 to R2 Serial0/0/0 uses a Serial DCE cable (DCE end on R1). Add the HWIC-2T card to both routers.
